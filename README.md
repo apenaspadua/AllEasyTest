@@ -63,4 +63,19 @@ src/
 
 ---
 
+### Demais informações
+
+Foi utilizada uma API pública para realizar a autenticação de login:
+🔗 https://dummyjson.com/docs/auth
+
+Credenciais de acesso:
+
+```sh
+➜  username: emilys
+➜  senha: emilyspass
+```
+
+Observação:
+Como a API utilizada exige um username (e não um e-mail) no request de login, a tela de autenticação foi implementada apenas com campo de username e senha, sem incluir campo ou validação de e-mail.
+
 Pronto! Agora é só começar a usar o app 🚀
