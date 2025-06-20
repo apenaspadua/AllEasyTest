@@ -1,6 +1,6 @@
 # AllEasyTest
 
-## Projeto
+## Execução
 
 https://github.com/user-attachments/assets/60a2c7fd-7e6a-46fc-9ddd-eea77a6bcbcc
 
