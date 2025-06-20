@@ -6,17 +6,11 @@ import React, {
   useEffect,
 } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-type User = {
-  id: string;
-  name: string;
-  email: string;
-  token: string;
-};
+import { IUser } from "interfaces/auth.interface";
 
 type AuthContextType = {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  user: IUser | null;
+  setUser: (user: IUser | null) => void;
   logout: () => void;
 };
 
@@ -25,7 +19,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const USER_STORAGE_KEY = "@LoginAppTest:user";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUserState] = useState<User | null>(null);
+  const [user, setUserState] = useState<IUser | null>(null);
 
   useEffect(() => {
     AsyncStorage.getItem(USER_STORAGE_KEY).then((storedUser) => {
@@ -35,7 +29,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
-  const setUser = (user: User | null) => {
+  const setUser = (user: IUser | null) => {
     setUserState(user);
     if (user) {
       AsyncStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));

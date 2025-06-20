@@ -2,10 +2,12 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useAuth } from "@contexts/AuthContext";
-import LoginScreen from "@screens/Login/LoginScreen";
-import HomeScreen from "@screens/Home/HomeScreen";
+import LoginScreen from "modules/Login/screens/LoginScreen";
+import HomeScreen from "modules/Home/screens/HomeScreen";
+import WelcomeScreen from "modules/Welcome/screens/WelcomeScreen";
 
 export type RootStackParamList = {
+  Wellcome: undefined;
   Login: undefined;
   Home: undefined;
 };
@@ -18,11 +20,14 @@ export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={user ? "Home" : "Login"}
+        initialRouteName={user ? "Home" : "Wellcome"}
         screenOptions={{ headerShown: false }}
       >
         {!user ? (
-          <Stack.Screen name="Login" component={LoginScreen} />
+          <>
+            <Stack.Screen name="Wellcome" component={WelcomeScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+          </>
         ) : (
           <Stack.Screen name="Home" component={HomeScreen} />
         )}
